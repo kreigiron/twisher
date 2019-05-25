@@ -5,13 +5,14 @@
  */
 
 plugins {
+    val quarkusVersion = "0.15.0"
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
     id("org.jetbrains.kotlin.jvm").version("1.3.21")
 
     // Apply the application plugin to add support for building a CLI application.
     java
     maven
-    id("io.quarkus") version "0.15.0"
+    id("io.quarkus") version quarkusVersion
 }
 
 
@@ -23,6 +24,7 @@ repositories {
 }
 
 dependencies {
+    val quarkusVersion = "0.15.0"
     // Use the Kotlin JDK 8 standard library.
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
@@ -32,7 +34,10 @@ dependencies {
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
-    implementation(enforcedPlatform("io.quarkus:quarkus-bom:0.15.0"))
+    testImplementation("io.quarkus:quarkus-junit5:$quarkusVersion")
+    testCompile("org.mockito:mockito-core:+")
+
+    implementation(enforcedPlatform("io.quarkus:quarkus-bom:$quarkusVersion"))
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-resteasy")
     implementation("io.quarkus:quarkus-kotlin")
