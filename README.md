@@ -11,3 +11,9 @@ A long twitter chain joiner
   ./gradlew quarkusDev 
 ```
 
+## parameters
+|name | description |
+|-----|-------------|
+|twitter.access.token | twitter access token |
+|twitter.access.token.secret  | twitter access token secret |
+
