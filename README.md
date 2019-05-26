@@ -6,7 +6,7 @@ A long twitter chain joiner
 * Openjdk 8
 
 
-# Running
+## Running
 ```
   ./gradlew quarkusDev 
 ```
