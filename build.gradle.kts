@@ -6,13 +6,16 @@
 
 plugins {
     val quarkusVersion = "0.15.0"
+    val kotlinVersion =  "1.3.21"
     // Apply the Kotlin JVM plugin to add support for Kotlin on the JVM.
-    id("org.jetbrains.kotlin.jvm").version("1.3.21")
+    id("org.jetbrains.kotlin.jvm") version kotlinVersion
 
     // Apply the application plugin to add support for building a CLI application.
     java
     maven
     id("io.quarkus") version quarkusVersion
+    id("kotlin") version kotlinVersion
+    id("kotlinx-serialization") version kotlinVersion
 }
 
 
@@ -42,6 +45,9 @@ dependencies {
     implementation("io.quarkus:quarkus-resteasy")
     implementation("io.quarkus:quarkus-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("io.ktor:ktor-client-core:1.2.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0")
+
 
 }
 

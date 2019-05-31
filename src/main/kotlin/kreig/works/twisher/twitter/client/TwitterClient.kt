@@ -5,21 +5,19 @@ import org.slf4j.LoggerFactory
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-open class TwitterClient {
+open class TwitterClient (httpClientEngine: HttpClientEngine) {
 
     var logger = LoggerFactory.getLogger(TwitterClient::class.java)
 
-    @ConfigProperty(name = "twitter.access.token")
-    lateinit var accessToken: String
+    @ConfigProperty(name = "twitter.bearer.token")
+    var actualBearerToken: String? = null
 
-    @ConfigProperty(name = "twitter.access.token.secret")
-    lateinit var secretToken: String
+    val client= HttpClient
 
 
-    fun getTwits(url: String): List<String> {
+    fun getTwits(url: String, bearerToken: String): List<String> {
 
-        logger.info("Accessing $url with $accessToken")
-
+        val actualBearerToken = if (this.actualBearerToken == null) actualBearerToken else this.actualBearerToken
 
         val twits = ArrayList<String>()
         return twits
